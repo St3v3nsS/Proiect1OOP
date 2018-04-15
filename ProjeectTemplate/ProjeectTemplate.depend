@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1521927441 source:e:\proiectoop\proiect1poo\projeecttemplate\vector.cpp
+	"Vector.h"
+	<iostream>
+	<vector>
+	<algorithm>
+
+1521927154 e:\proiectoop\proiect1poo\projeecttemplate\vector.h
+	<iostream>
+
+1521927800 source:e:\proiectoop\proiect1poo\projeecttemplate\matrix.cpp
+	"Matrix.h"
+	<iostream>
+	"Vector.h"
+	<vector>
+	<algorithm>
+
+1521926851 e:\proiectoop\proiect1poo\projeecttemplate\matrix.h
+	<iostream>
+	<vector>
+	"Vector.h"
+	<algorithm>
+
+1523448793 source:e:\proiectoop\proiect1poo\projeecttemplate\main.cpp
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1523105730 e:\proiectoop\proiect1poo\projeecttemplate\vector.hpp
+	<iostream>
+	<algorithm>
+
+1523105345 e:\proiectoop\proiect1poo\projeecttemplate\matrix.hpp
+	<iostream>
+	<vector>
+	"Vector.hpp"
+	<algorithm>
+

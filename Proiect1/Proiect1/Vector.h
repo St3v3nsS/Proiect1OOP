@@ -22,6 +22,7 @@ public:
 	friend bool operator!=(const Vector&, const Vector&);
 	friend bool operator==(const Vector&, const Vector&);
 	friend bool operator<(const Vector&, const Vector&);
+	friend bool operator>(const Vector&, const Vector&);
 	friend ostream &operator<<(ostream&, const Vector&);
 	friend istream &operator>>(istream&, Vector&);
 	friend class Matrix;

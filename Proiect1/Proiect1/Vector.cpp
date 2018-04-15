@@ -121,12 +121,26 @@ bool operator<(const Vector& obj1, const Vector& obj2){
         return true;
 	if (obj1.sizeN > obj2.sizeN)
 		return false;
+	
+	if (obj1.sizeN == obj2.sizeN) {
+		if (obj1.arr[1] >= obj2.arr[1]) {
+				return false;
+			}
+	}
+	return true;
+}
+bool operator>(const Vector& obj1, const Vector& obj2) {
+	if (obj1.sizeN < obj2.sizeN)
+		return false;
+	if (obj1.sizeN > obj2.sizeN)
+		return true;
 	if (obj1.sizeN == obj2.sizeN) {
 		for (int i = 1; i <= obj1.sizeN; i++)
-			for(int j = 1; j <= obj2.sizeN; j++)
-				if (obj1.arr[i] >= obj2.arr[j]) {
+			for (int j = 1; j <= obj2.sizeN; j++)
+				if (obj1.arr[i] <= obj2.arr[j]) {
+					cout << "ok\n";
 					return false;
-			}
+				}
 	}
 	return true;
 }
