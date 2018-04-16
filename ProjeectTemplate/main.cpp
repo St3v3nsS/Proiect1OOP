@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -295,31 +296,27 @@ bool solve(Matrix<double>& matrix, Vector<double>& x, Vector<double>& y) {
 
 int main()
 {
-	int n;
-	double x, nr;
+
+	int n, x, nr;
 	cout << "Se vor citi cele N obiecte din fisier. Asemenea si obiectul de tip matrice,\n" <<
 		"dar si cele doua obiecte de tip vector folosite pentru verificarea ecuatiei.\n" <<
 		"*****************************************************************************\n" <<
 		"Se citeste N(nr de obiecte), dimensiunea fiecarui obiect si elementele obiectului.\n" <<
 		"Se citesc nr de linii si de coloane ale matricei, elementele matricei si cele doua obiecte.\n";
 	in >> n;
-	Vector<double> *arrey = new Vector<double>[n + 1];
+	Vector <double>*arrey = new Vector<double>[n + 1];
 	for (int i = 1; i <= n; i++) {
 		in >> x;
 		arrey[i].init(x);
 		in >> arrey[i];
 	}
-	arrey[1].sortare();
-	out << arrey[1] << "\n" << arrey[2] << '\n';
-	out << arrey[1] * arrey[2] << "\n";
 	int lin, col;
 	in >> lin >> col;
 	Matrix<double> M(lin, col);
 	in >> M;
-	out <<'\n' << M;
 	int a, b;
 	in >> a >> b;
-	Vector <double> arr1(a), arr2(b);
+	Vector<double> arr1(a), arr2(b);
 	in >> arr1 >> arr2;
 	if (solve(M, arr1, arr2) == 1) {
 		out << "\nEcuatia este corecta!\n";
@@ -328,8 +325,8 @@ int main()
 		out << "\nEcuatia nu este corecta!\n";
 	}
 
-	int option, num, pos = 0;
-	double elem;
+	int option, pos = 0, elem, num;
+	string num1, option1;
 	Vector<double> temp;
 	bool sortat = 0;
 	do {
@@ -340,68 +337,67 @@ int main()
 			<< "4. Sortati obiectele crescator\n"
 			<< "5. Afisati obiectele\n"
 			<< "6. Exit!\n";
-		cin >> option;
-		if (option < 1 || option > 6) {
+		cin >> option1;
+		option = atoi(option1.c_str());
+		if (option < 1 || option > 6 || !isdigit(option1[0])) {
 			cout << "Numar gresit!\n";
+
 		}
 		switch (option)
 		{
 		case 1: cout << "Introduceti un numar: ";
-
-			cin >> num;
-			if (num > n) {
-				cout << "Error!\n";
-				break;
-			}
 			try
 			{
+				cin >> num1;
+				num = atoi(num1.c_str());
+				if (num > n || !isdigit(num1[0]))
+					throw "error";
 				elem = arrey[num].findMax(pos);
 			}
 			catch (...)
 			{
 				cout << "Error!\n";
+				break;
 			}
 			cout << "Elementul maxim este: " << elem << " si se afla pe pozitia " << pos << "\n";
 			break;
 		case 2: cout << "Introduceti un numar: ";
 
-			cin >> num;
-			if (num > n) {
-				cout << "Error!\n";
-				break;
-			}
 			try
 			{
+				cin >> num1;
+				num = atoi(num1.c_str());
+				if (num > n || !isdigit(num1[0]))
+					throw "error";
 				cout << arrey[num].getSum() << '\n';
 			}
 			catch (const exception& e)
 			{
 				cout << e.what() << " ";
+				break;
 			}
 			break;
 		case 3: cout << "Introduceti un numar: ";
 
-			cin >> num;
-			if (num > n) {
-				cout << "Error!\n";
-				break;
-			}
 			try
 			{
+				cin >> num1;
+				num = atoi(num1.c_str());
+				if (num > n || !isdigit(num1[0]))
+					throw "error";
 				arrey[num].sortare();
 			}
 			catch (const exception& e)
 			{
 				cout << e.what() << " ";
+				break;
 			}
 			cout << arrey[num] << '\n';
 			break;
 		case 4:
-			for (int i = 1; i <= n; i++)
-				arrey[i].sortare();
 			do {
 				sortat = 1;
-				for(int i = 1; i < n; i++)
+				for (int i = 1; i < n; i++)
 					if (arrey[i] < arrey[i + 1]) {
 						;
 					}
@@ -422,7 +418,7 @@ int main()
 			break;
 		}
 	} while (option <= 6);
-    return 0;
+	return 0;
 }
 
 
