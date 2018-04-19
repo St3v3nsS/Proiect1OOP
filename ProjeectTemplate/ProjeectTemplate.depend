@@ -36,3 +36,18 @@
 	"Vector.hpp"
 	<algorithm>
 
+1524165139 source:c:\users\john\desktop\proiectoop\proiect1oop\projeecttemplate\main.cpp
+	<iostream>
+	<fstream>
+	"Vector.hpp"
+	"Matrix.hpp"
+	<string>
+
+1524164978 c:\users\john\desktop\proiectoop\proiect1oop\projeecttemplate\vector.hpp
+	<iostream>
+	<algorithm>
+
+1524165100 c:\users\john\desktop\proiectoop\proiect1oop\projeecttemplate\matrix.hpp
+	<iostream>
+	<algorithm>
+

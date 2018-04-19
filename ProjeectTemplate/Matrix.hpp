@@ -1,11 +1,11 @@
-#ifndef MATRIX_HPP
-#define MATRIX_HPP
+#ifndef MATRIX_HPP_INCLUDED
+#define MATRIX_HPP_INCLUDED
+
 #include <iostream>
-#include <vector>
-#include "Vector.hpp"
 #include <algorithm>
 
 using namespace std;
+
 #define nullptr NULL
 
 template <typename T>
@@ -19,8 +19,10 @@ class Matrix
 		void init(int, int);
 		int getLinii();
 		int getColumn();
-        friend ostream& operator<<(ostream&, const Matrix<T>&);
-        friend istream& operator>>(istream&, Matrix<T>&);
+        template <class U>
+        friend ostream& operator<<(ostream&, const Matrix<U>&);
+        template <class U>
+        friend istream& operator>>(istream&, Matrix<U>&);
         Matrix operator+(const Matrix<T>&);
 		Vector<T>& operator[](int);
         ~Matrix();
@@ -107,4 +109,5 @@ Matrix<T>::~Matrix()
 	//cout << "\n Matrix deleted";
 }
 
-#endif // MATRIX_HPP
+
+#endif // MATRIX_HPP_INCLUDED

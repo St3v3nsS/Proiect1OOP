@@ -35,7 +35,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="Matrix.h" />
+		<Unit filename="Matrix.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Vector.h" />
+		<Unit filename="Vector.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="date.in" />
 		<Unit filename="date.out" />
 		<Unit filename="main.cpp" />

@@ -96,6 +96,12 @@ Vector::Vector(const Vector& obj){
 }
 
 Vector& Vector::operator=(const Vector& obj){
+	if (*this != obj) {
+		sizeN = obj.sizeN;
+		for (int i = 1; i <= sizeN; i++)
+			arr[i] = obj.arr[i];
+
+	}
     return *this;
 }
 

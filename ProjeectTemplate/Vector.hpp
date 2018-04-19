@@ -1,7 +1,11 @@
-#pragma once
+#ifndef VECTOR_HPP_INCLUDED
+#define VECTOR_HPP_INCLUDED
+
 #include <iostream>
 #include <algorithm>
+
 using namespace std;
+
 #define nullptr NULL
 
 template<typename T>
@@ -24,13 +28,15 @@ public:
 	void sortare();
 	int getSize();
 	T& operator[](int);
-	friend T operator*(const Vector<T>&,const Vector<T>&);
+	T operator*(const Vector<T>&);
 	Vector<T>& operator=(const Vector<T>&);
-	friend bool operator!=(const Vector<T>&, const Vector<T>&);
-	friend bool operator==(const Vector<T>&, const Vector<T>&);
-	friend bool operator<(const Vector<T>&, const Vector<T>&);
-	friend ostream &operator<<(ostream&, const Vector<T>&);
-	friend istream &operator>>(istream&, Vector<T>&);
+	bool operator!=(const Vector<T>&);
+	bool operator==(const Vector<T>&);
+	bool operator<(const Vector<T>&);
+	template <class U>
+	friend ostream &operator<<(ostream&, const Vector<U>&);
+	template <class U>
+	friend istream &operator>>(istream&, Vector <U>&);
 	friend class Matrix<T>;
 	~Vector();
 };
@@ -95,7 +101,7 @@ istream& operator>>(istream& in, Vector<T>& obj) {
 }
 
 template <typename T>
-ostream &operator<<(ostream& out,const Vector<T>& obj) {
+ostream& operator<<(ostream& out, const Vector<T>& obj) {
 	for (int i = 1; i <= obj.sizeN; i++) {
 		out << obj.arr[i] << " ";
 	}
@@ -103,10 +109,10 @@ ostream &operator<<(ostream& out,const Vector<T>& obj) {
 }
 
 template <typename T>
-T operator*(const Vector<T>& obj1,const Vector<T>& obj2) {
+T Vector<T>:: operator*(const Vector<T>& obj2) {
 	T sum = 0;
-	for (T i = 1; i <= obj1.sizeN; i++) {
-		sum = sum + obj1.arr[i] * obj2.arr[i];
+	for (int i = 1; i <= sizeN; i++) {
+		sum = sum + arr[i] * obj2.arr[i];
 	}
 	return sum;
 }
@@ -139,12 +145,12 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& obj){
     return *this;
 }
 template <typename T>
-bool operator!=(const Vector<T>& obj1, const Vector<T>& obj2){
-    if(obj1.sizeN == obj2.sizeN){
+bool Vector<T>::operator!=(const Vector<T>& obj2){
+    if(sizeN == obj2.sizeN){
         //obj1.sortare();
         //obj2.sortare();
-        for(int i = 1; i <= obj1.sizeN; i++){
-            if(obj1.arr[i] != obj2.arr[i])
+        for(int i = 1; i <= sizeN; i++){
+            if(arr[i] != obj2.arr[i])
                 return true;
         }
         return false;
@@ -153,14 +159,16 @@ bool operator!=(const Vector<T>& obj1, const Vector<T>& obj2){
 }
 
 template <typename T>
-bool operator==(const Vector<T>& obj1, const Vector<T>& obj2){
-    return !operator!=(obj1, obj2);
+bool Vector<T>::operator==(const Vector<T>& obj2){
+    return !operator!=(*this, obj2);
 }
 
 template <typename T>
-bool operator<(const Vector<T>& obj1, const Vector<T>& obj2){
-    if(obj1.sizeN < obj2.sizeN)
+bool Vector<T>::operator<(const Vector<T>& obj2){
+    if(sizeN < obj2.sizeN)
         return true;
+    if(sizeN == obj2.sizeN)
+        return arr[1]<obj2.arr[1];
     return false;
 }
 template <typename T>
@@ -169,4 +177,4 @@ Vector<T>::~Vector()
 	delete[] arr;
 }
 
-
+#endif // VECTOR_HPP_INCLUDED
